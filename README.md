@@ -1,50 +1,54 @@
 # Discord DVR
 
-Discord DVR is an unofficial iOS adaptation of [Drover for Windows](https://github.com/hdrover/discord-drover). It runs an app-local library inside a modified Discord iOS client and sends a short UDP setup sequence before an eligible voice connection attempt. It is not a VPN and does not change traffic outside the app.
+An unofficial iOS adaptation of [Drover](https://github.com/hdrover/discord-drover) for Discord voice calls, video calls, and screen sharing on restricted networks. Version 0.3.1 runs automatically; there is no switch to enable.
 
-This repository contains the port's source code, tests, and build instructions. **It does not contain a downloadable Discord IPA.** There is no public, authorized full-IPA release at this time.
+## 1. Download the IPA
 
-## Install on an iPhone
+**Public IPA: Not available yet.** The [Releases page](https://github.com/V2sousf/Discord-DVR/releases) currently has no downloadable app. Do not select **Source code (zip)**; source archives cannot be installed on an iPhone.
 
-Use an IPA you are authorized to obtain and install. If a public download becomes available, check the [Releases page](https://github.com/V2sousf/Discord-DVR/releases). Do not download GitHub's **Source code (zip)** expecting an installable app.
+**Private 0.3.1 test build (repository access required):** Open the [successful GitHub Actions run](https://github.com/V2sousf/Drover-ios-research/actions/runs/38256674504), scroll to **Artifacts**, and download `discord-dvr-private-test-0.3.1`. Extract the ZIP and use `Discord-DVR-0.3.1-260.0.ipa`. GitHub may remove temporary artifacts after their retention period.
 
-1. Download the `.ipa` file to a Windows or macOS computer. Extract it first if it is inside a ZIP file.
-2. Install [Sideloadly](https://sideloadly.io/) and any Apple components it requests.
-3. Connect the unlocked iPhone to the computer with a USB cable and tap **Trust** if iOS asks whether to trust the computer.
-4. Open Sideloadly. Select the iPhone and drag the IPA into the application.
-5. Enter **your own Apple ID** into Sideloadly, then press **Start**. Complete any Apple verification prompts in Sideloadly.
-6. If iOS blocks the app as an untrusted developer, open **Settings → General → VPN & Device Management**, select your signing profile, and trust it.
-7. On iOS 16 or later, enable **Settings → Privacy & Security → Developer Mode** if requested. Restart the phone and confirm the setting.
-8. Open Discord DVR, grant microphone/camera permissions as needed, and test a voice call in both directions. Test video and screen sharing separately.
+If a public IPA release is authorized in the future, download its `.ipa` attachment from **Releases** and follow the steps below.
 
-No jailbreak is needed for this sideloading method. No in-app Drover switch is required in version 0.3.1; the adaptation runs automatically.
+## 2. Install the IPA with Sideloadly
 
-**Free Apple ID signing generally expires after seven days.** Renew the installation with Sideloadly to keep opening the app. Do not share your Apple password, verification codes, signing certificates, or provisioning profiles with this project.
+1. Download and install [Sideloadly](https://sideloadly.io/) on a **Windows PC or Mac**. Install any Apple components it requests.
+2. Connect the iPhone using a USB cable, unlock it, and select **Trust This Computer** if prompted.
+3. Open Sideloadly. Choose your iPhone and drag the `.ipa` file into the window.
+4. Enter **your own Apple ID in Sideloadly** and click **Start**. Complete any verification prompts. Do not send your password or verification code to anyone.
+5. Wait for Sideloadly to finish installing Discord DVR.
 
-See [INSTALLATION.md](INSTALLATION.md) for troubleshooting and more information.
+No jailbreak or source-code compilation is required to install an existing IPA.
 
-## Confirmed tests
+## 3. Allow the app to open
 
-| Version | Result |
+- **Untrusted Developer:** On the iPhone, open **Settings → General → VPN & Device Management** and trust the profile associated with the Apple ID used for signing.
+- **Developer Mode Required (iOS 16+):** Open **Settings → Privacy & Security → Developer Mode**, turn it on, restart the iPhone, and confirm **Turn On**.
+- Open **Discord DVR**. Sign in and grant microphone/camera permissions when prompted. **Do not look for a Drover button:** the 0.3.1 release build enables the adaptation automatically.
+
+## 4. Test it
+
+Start a voice call and confirm that **both people can hear each other**. Then test the camera and screen sharing. A speaking indicator is not proof that audio reached the other person.
+
+**Important:** Free Apple ID signing typically expires after **7 days**. Refresh or re-sign the app using Sideloadly to keep it working. Use the same signing account when refreshing an existing installation where possible.
+
+For installation errors, read [the troubleshooting guide](INSTALLATION.md).
+
+## Tested devices
+
+| Version | Reported result |
 | --- | --- |
-| 0.3.0 | The maintainer reported working two-way voice, video, and screen sharing on iPhone 7 / iOS 15.8.8 in the UAE. |
-| 0.3.1 | The maintainer reported working voice, video, and screen sharing on a newer iPhone; the exact model and iOS version were not recorded. The private GitHub Actions build and package checks also passed. |
+| 0.3.0 | Voice, camera, and screen sharing worked on **iPhone 7 / iOS 15.8.8** in the UAE. |
+| 0.3.1 | Voice, camera, and screen sharing worked on a **newer iPhone**. The exact model and iOS version were not recorded. |
 
-The code targets ARM64 and iOS 15.1 or later. This build target does **not** establish that all iPhones, iOS versions, Discord releases, or networks work. Discord updates may require changes to this adaptation.
+These are maintainer-reported device tests, not a guarantee for every iPhone or Discord version. The code targets ARM64 and iOS 15.1 or later.
 
-## Build from source
+## Source code and credits
 
-- Run `bash ios/build_release.sh` on macOS with Xcode to build and test the standalone DVR library.
-- Read [docs/BUILDING.md](docs/BUILDING.md) before preparing a local IPA.
-- Read [ios/README.md](ios/README.md) for the network hook behavior and source layout.
-- Report reproducible problems through [Issues](https://github.com/V2sousf/Discord-DVR/issues). Do not attach credentials, media, or private network logs.
+The [`ios/` directory](ios/) contains the iOS adaptation, tests, and build tools. To compile the standalone library on macOS with Xcode, follow [the build instructions](docs/BUILDING.md).
 
-The source build does not produce an installable Discord client. Local packaging requires separately obtained compatible inputs and appropriate authorization.
+The port was developed from the publicly documented behavior of [Windows Drover](https://github.com/hdrover/discord-drover) with AI-assisted tools, including OpenAI Codex. Credit also goes to [fishhook](https://github.com/facebook/fishhook) and the Bunny/Vendetta contributors associated with the historical test base.
 
-## Credits, licensing, and limitations
+This project is not affiliated with or endorsed by Discord. Using a modified client may carry security and account-policy risks. The repository's MIT license covers only its original contributions; it does not provide permission to redistribute Discord's client or the upstream Drover packet. See [third-party notices](THIRD_PARTY_NOTICES.md).
 
-Credit the original [Drover project](https://github.com/hdrover/discord-drover), [fishhook](https://github.com/facebook/fishhook), and Bunny/Vendetta contributors associated with the historical test base. The iOS port was developed with AI-assisted tools, including OpenAI Codex, and tested by the maintainer.
-
-Discord DVR is not affiliated with or endorsed by Discord. Using an unofficial modified client can pose security and account-policy risks.
-
-The MIT license applies only to the original work in this repository. It does not grant rights to Discord's client, the upstream Drover packet, or other third-party components. Do not redistribute those files without the necessary permissions. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [SECURITY.md](SECURITY.md).
+[Report an issue](https://github.com/V2sousf/Discord-DVR/issues) without posting Apple account credentials, private logs, or call content.
