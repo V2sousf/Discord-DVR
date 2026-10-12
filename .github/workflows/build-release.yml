@@ -1,0 +1,31 @@
+name: Build and test iOS source library
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/**'
+      - 'licenses/**'
+      - '.github/workflows/build-release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-source:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run tests and compile original DVR library
+        run: bash ios/build_release.sh
+      - name: Upload library and test results (no Discord client)
+        uses: actions/upload-artifact@v4
+        with:
+          name: discord-dvr-source-library-0.3.1
+          path: build/release/
+          retention-days: 7
+          if-no-files-found: error

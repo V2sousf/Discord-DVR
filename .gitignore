@@ -1,0 +1,33 @@
+# Local app inputs, outputs and credentials must never enter the source repository.
+*.ipa
+*.dylib
+*.deb
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.pem
+*.key
+*.ndjson
+*.log
+.env
+.env.*
+!.env.example
+credentials/
+secrets/
+private/
+backups/
+/build/
+/dist/
+/artifacts/
+/vendor/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+Thumbs.db
+# Upstream supplies no clear redistribution grant for this packet.
+**/drover-packet.bin
+*.xcuserstate
+xcuserdata/

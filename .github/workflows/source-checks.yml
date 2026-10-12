@@ -1,0 +1,35 @@
+name: Source checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check for private files and credentials
+        run: python3 tools/audit_public_tree.py
+      - name: Check local Markdown links
+        run: python3 docs/check_documentation.py
+      - name: Validate Python source
+        env:
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/dvr-python-cache
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import py_compile
+          for file in Path('.').rglob('*.py'):
+              if '.git' not in file.parts and '__pycache__' not in file.parts:
+                  py_compile.compile(str(file), doraise=True)
+          print('Python syntax verified.')
+          PY
