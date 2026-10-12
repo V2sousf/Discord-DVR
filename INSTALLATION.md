@@ -1,6 +1,8 @@
 # Install Discord DVR on iPhone
 
-**Do not treat a source archive as an IPA.** This repository does not distribute a full modified Discord IPA. Obtain only an IPA you are authorized to use. Check [Releases](https://github.com/V2sousf/Discord-DVR/releases) for distributable builds if one is published in the future.
+Download [Discord DVR 0.3.1 IPA](https://github.com/V2sousf/Discord-DVR/releases/download/v0.3.1/Discord-DVR-0.3.1-260.0.ipa), or find it in [Release v0.3.1](https://github.com/V2sousf/Discord-DVR/releases/tag/v0.3.1) under **Assets**. Choose `Discord-DVR-0.3.1-260.0.ipa`; do not select **Source code (zip)**.
+
+**SHA-256:** `dda1a637d48eea5f67364e6132e3a2faadedf3c8820d97a235ee517639e3a051`
 
 ## Requirements
 
@@ -11,7 +13,7 @@
 
 ## Installation
 
-1. Save the authorized `.ipa` on the computer. If it arrived as a GitHub Actions artifact, unzip that download and locate the IPA inside. Artifacts from private builds are not public downloads.
+1. Download `Discord-DVR-0.3.1-260.0.ipa` from the release page to your computer.
 2. Start Sideloadly and connect your unlocked iPhone using USB.
 3. Approve **Trust This Computer** if the iPhone displays the prompt. Check that Sideloadly has selected the intended device.
 4. Drag the IPA into Sideloadly. Do not add extra tweaks to the build; the release library is already included.
