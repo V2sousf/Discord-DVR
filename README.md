@@ -4,11 +4,13 @@ An unofficial iOS adaptation of [Drover](https://github.com/hdrover/discord-drov
 
 ## 1. Download the IPA
 
-**Public IPA: Not available yet.** The [Releases page](https://github.com/V2sousf/Discord-DVR/releases) currently has no downloadable app. Do not select **Source code (zip)**; source archives cannot be installed on an iPhone.
+**[Download Discord DVR 0.3.1 IPA](https://github.com/V2sousf/Discord-DVR/releases/download/v0.3.1/Discord-DVR-0.3.1-260.0.ipa)**
 
-**Private 0.3.1 test build (repository access required):** Open the [successful GitHub Actions run](https://github.com/V2sousf/Drover-ios-research/actions/runs/38256674504), scroll to **Artifacts**, and download `discord-dvr-private-test-0.3.1`. Extract the ZIP and use `Discord-DVR-0.3.1-260.0.ipa`. GitHub may remove temporary artifacts after their retention period.
+Download the `Discord-DVR-0.3.1-260.0.ipa` file to a Windows PC or Mac. You can also open [Release v0.3.1](https://github.com/V2sousf/Discord-DVR/releases/tag/v0.3.1), expand **Assets**, and select the IPA.
 
-If a public IPA release is authorized in the future, download its `.ipa` attachment from **Releases** and follow the steps below.
+**Do not select Source code (zip)**. Source archives are not installable iPhone apps.
+
+**SHA-256:** `dda1a637d48eea5f67364e6132e3a2faadedf3c8820d97a235ee517639e3a051`
 
 ## 2. Install the IPA with Sideloadly
 
